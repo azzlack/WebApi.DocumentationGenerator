@@ -1,0 +1,36 @@
+﻿@using System.Web.Mvc.Html
+@using System.Web.Optimization
+@model WebApi.PerformanceMonitor.ViewModels.OverallPerformanceViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/scripts/performance.js")
+}
+
+<header>
+    <div class="content-wrapper">       
+        <div class="float-left">
+            <p class="site-title"><a href="/">WebApi.PerformanceMonitor - @ViewBag.Header</a></p>
+        </div>
+    </div>
+</header>
+<div id="body">
+    <section class="featured">
+    <div class="content-wrapper">
+        <nav>
+            <ul id="menu" class="clear-fix">
+                <li>@Html.ActionLink("Start", "Index")</li>
+                @foreach (var controller in Model.ApiDescriptions.GroupBy(x => x.ActionDescriptor.ControllerDescriptor.ControllerName).OrderBy(x => x.Key))
+                {
+                    <li>@Html.ActionLink(controller.Key, "Details", new { id = controller.Key })</li>
+                }
+            </ul>
+        </nav>
+    </div>
+</section>
+    @RenderBody()
+</div>

@@ -1,15 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.DocumentationController", "WebApi.DocumentationController\WebApi.DocumentationController.csproj", "{3AB58EE7-AB77-4EC5-A794-A3C00BC2B070}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.PerformanceMonitor", "WebApi.PerformanceMonitor\WebApi.PerformanceMonitor.csproj", "{3AB58EE7-AB77-4EC5-A794-A3C00BC2B070}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.DocumentationController.Test", "WebApi.DocumentationController.Test\WebApi.DocumentationController.Test.csproj", "{16F4E49E-1388-433B-B6B1-E9FBEC8AE921}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.PerformanceMonitor.Test", "WebApi.PerformanceMonitor.Test\WebApi.PerformanceMonitor.Test.csproj", "{16F4E49E-1388-433B-B6B1-E9FBEC8AE921}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.DocumentationController.Ninject", "WebApi.DocumentationController.Ninject\WebApi.DocumentationController.Ninject.csproj", "{A68488D4-D5C2-4CC7-8D4B-A89C393E6D9B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.DocumentationController.NugetPackager", "WebApi.DocumentationController.NugetPackager\WebApi.DocumentationController.NugetPackager.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.DocumentationController.Ninject.NugetPackager", "WebApi.DocumentationController.Ninject.NugetPackager\WebApi.DocumentationController.Ninject.NugetPackager.csproj", "{EC0119C8-18D9-4FD8-826F-7C01BB87E4A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.PerformanceMonitor.NugetPackager", "WebApi.PerformanceMonitor.NugetPackager\WebApi.PerformanceMonitor.NugetPackager.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +25,6 @@ Global
 		{3AB58EE7-AB77-4EC5-A794-A3C00BC2B070}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AB58EE7-AB77-4EC5-A794-A3C00BC2B070}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AB58EE7-AB77-4EC5-A794-A3C00BC2B070}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A68488D4-D5C2-4CC7-8D4B-A89C393E6D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A68488D4-D5C2-4CC7-8D4B-A89C393E6D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A68488D4-D5C2-4CC7-8D4B-A89C393E6D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A68488D4-D5C2-4CC7-8D4B-A89C393E6D9B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC0119C8-18D9-4FD8-826F-7C01BB87E4A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC0119C8-18D9-4FD8-826F-7C01BB87E4A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC0119C8-18D9-4FD8-826F-7C01BB87E4A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC0119C8-18D9-4FD8-826F-7C01BB87E4A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

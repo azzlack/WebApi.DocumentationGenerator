@@ -1,0 +1,16 @@
+﻿@using System.Web.Http.Description
+@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@model WebApi.PerformanceMonitor.ViewModels.ControllerPerformanceViewModel
+
+@{
+    ViewBag.Title = Model.ControllerDescriptor.ControllerName;
+    ViewBag.Header = Model.ControllerDescriptor.ControllerName;
+    Layout = "~/Views/Performance/_PerformanceLayout.cshtml";
+}
+
+<section class="content-wrapper main-content clear-fix">
+    <h1>@Model.ControllerDescriptor.ControllerName</h1>
+    <p>This is the performance for @Model.ControllerDescriptor.ControllerName.</p>
+    <div class="performance">&nbsp;</div>
+</section>

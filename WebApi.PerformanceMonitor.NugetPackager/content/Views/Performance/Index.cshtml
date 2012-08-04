@@ -1,0 +1,25 @@
+﻿@using System.Reflection
+@using System.Web.Mvc.Html
+@using System.Web.Optimization
+@model WebApi.PerformanceMonitor.ViewModels.OverallPerformanceViewModel
+
+@{
+    ViewBag.Title = "Start";
+    ViewBag.Header = "Start";
+    Layout = "~/Views/Performance/_PerformanceLayout.cshtml";
+}
+
+<section class="content-wrapper main-content clear-fix">
+    <h1>Start</h1>
+    <p>This is the overall performance for your API.</p>
+    <div class="performance">&nbsp;</div>
+    <h5>Changelog</h5>
+    <ol class="versions">
+        <li>
+            <h6>1.0.0.0</h6>
+            <p>
+                Initial release.
+            </p>
+        </li>
+    </ol>
+</section>
