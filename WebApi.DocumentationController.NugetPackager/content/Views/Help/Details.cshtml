@@ -1,0 +1,73 @@
+﻿@using System.Web.Http.Description
+@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@model WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel
+
+@{
+    ViewBag.Title = Model.ControllerDescriptor.ControllerName;
+    ViewBag.Header = Model.ControllerDescriptor.ControllerName;
+    Layout = "~/Views/Help/_HelpLayout.cshtml";
+}
+
+<section class="content-wrapper main-content clear-fix">
+    <h1>@Model.ControllerDescriptor.ControllerName</h1>
+
+    <ul class="actions">
+        @foreach (var description in Model.ControllerApiDescriptions)
+        {
+            <li class="action">
+                <table class="routes">
+                    @foreach (var route in Model.AttributeRoutes.Where(x => x.Defaults.Any(c => (c.Key.Equals("action") && c.Value.ToString().Equals(description.ActionDescriptor.ActionName)))))
+                    {
+                        <tr>
+                            @{
+                                var httpMethodConstraint = route.Constraints.Values.OfType<AttributeRouting.Web.Constraints.RestfulHttpMethodConstraint>().FirstOrDefault();
+                            }
+                            <td>@httpMethodConstraint.AllowedMethods.FirstOrDefault()</td><td>@route.Url</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>@description.HttpMethod</td><td>@description.RelativePath</td>
+                    </tr>
+                </table>
+                @{
+                    var actiondocs = Json.Decode(description.Documentation);
+                }
+                <p>@MvcHtmlString.Create(actiondocs.summary.Replace(Environment.NewLine, "<br/>"))</p>
+                <table>
+                    @if (!string.IsNullOrEmpty(actiondocs.example)) 
+                    {
+                        <tr><td>Example:</td><td>@MvcHtmlString.Create(actiondocs.example.Replace(Environment.NewLine, "<br/>"))</td></tr>
+                    }
+                    @if (!string.IsNullOrEmpty(actiondocs.remarks))
+                    {
+                        <tr><td>Remarks:</td><td>@MvcHtmlString.Create(actiondocs.remarks.Replace(Environment.NewLine, "<br/>"))</td></tr>
+                    }
+                    @if (!string.IsNullOrEmpty(actiondocs.returns))
+                    {
+                        <tr><td>Returns:</td><td>@MvcHtmlString.Create(actiondocs.returns.Replace(Environment.NewLine, "<br/>"))</td></tr>
+                    }
+                </table>
+                
+                @if (description.ParameterDescriptions.Count > 0)
+                {
+                    <h5>Parameters:</h5>
+                    <table class="parameters">
+                        @foreach (var parameter in description.ParameterDescriptions.Where(x => x.Source == ApiParameterSource.FromUri))
+                        {
+                            <tr>
+                                <td>@parameter.Name</td><td>@parameter.Documentation</td><td>(URI)</td>
+                            </tr>
+                        }
+                        @foreach (var parameter in description.ParameterDescriptions.Where(x => x.Source == ApiParameterSource.FromBody))
+                        {
+                            <tr>
+                                <td>@parameter.Name</td><td>@parameter.Documentation</td><td>(Body)</td>
+                            </tr>
+                        }
+                    </table>
+                }
+            </li>
+        }
+    </ul>
+</section>
