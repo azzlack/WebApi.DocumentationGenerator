@@ -1,4 +1,4 @@
-WebApi.PerformanceMonitor
-=========================
+WebApi.DocumentationGenerator
+=============================
 
-Performance monitor for ASP.NET WebAPI
+Documentation pages generator for ASP.NET WebAPI
