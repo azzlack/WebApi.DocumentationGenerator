@@ -7,8 +7,8 @@
     <ProjectGuid>{A68488D4-D5C2-4CC7-8D4B-A89C393E6D9B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebApi.DocumentationController.Ninject</RootNamespace>
-    <AssemblyName>WebApi.DocumentationController.Ninject</AssemblyName>
+    <RootNamespace>Ninject.Web.WebApi.DocumentationController</RootNamespace>
+    <AssemblyName>Ninject.Web.WebApi.DocumentationController</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

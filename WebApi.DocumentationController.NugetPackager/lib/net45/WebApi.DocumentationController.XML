@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi.DocumentationController</name>
+    </assembly>
+    <members>
+        <member name="T:WebApi.DocumentationController.App_Start.BundleConfig">
+            <summary>
+            Configures the documentation resource bundle.
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.App_Start.BundleConfig.Start">
+            <summary>
+            Executes after the application starts.
+            </summary>
+        </member>
+        <member name="T:WebApi.DocumentationController.Controllers.HelpController">
+            <summary>
+            Controller for viewing automatically generated documentation.
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Controllers.HelpController.Index">
+            <summary>
+            Default view.
+            </summary>
+            <returns>The default view.</returns>
+        </member>
+        <member name="M:WebApi.DocumentationController.Controllers.HelpController.Details(System.String)">
+            <summary>
+            Details view
+            </summary>
+            <param name="id">The controller name.</param>
+            <returns>The detailed view of a Controller.</returns>
+        </member>
+        <member name="M:WebApi.DocumentationController.Controllers.HelpController.ModelDiagram">
+            <summary>
+            Models diagram view.
+            </summary>
+            <returns>The model diagram view.</returns>
+        </member>
+        <member name="T:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider">
+            <summary>
+            Documentation provider for XML comments.
+            </summary>
+        </member>
+        <member name="F:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.MethodExpression">
+            <summary>
+            XPath expression for finding methods.
+            </summary>
+        </member>
+        <member name="F:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.NullableTypeNameRegex">
+            <summary>
+            Regular expression for determining nullable types.
+            </summary>
+        </member>
+        <member name="F:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.documentNavigator">
+            <summary>
+            The xml document navigator.
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider"/> class.
+            </summary> 
+        </member>
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The document path.</param>
+        </member>
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            Gets the action documentation.
+            </summary>
+            <param name="actionDescriptor">The action descriptor.</param>
+            <returns>The documentation for the action as JSON.</returns>
+        </member>
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpParameterDescriptor)">
+            <summary>
+            Gets the parameter documentation.
+            </summary>
+            <param name="parameterDescriptor">The parameter descriptor.</param>
+            <returns>The summary documentation for the parameter as a string.</returns>
+        </member>
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.GetMemberName(System.Reflection.MethodInfo)">
+            <summary>
+            Gets the name of the member.
+            </summary>
+            <param name="method">The method.</param>
+            <returns>The member name as a string.</returns>
+        </member>
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.ProcessTypeName(System.String)">
+            <summary>
+            Processes the name of the type.
+            </summary>
+            <param name="typeName">Name of the type.</param>
+            <returns>The process type name as a string.</returns>
+        </member>
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.GetMemberNode(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            Gets the member node.
+            </summary>
+            <param name="actionDescriptor">The action descriptor.</param>
+            <returns>The xpath navigator for the member node.</returns>
+        </member>
+        <member name="T:WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel">
+            <summary>
+            Viewmodel for the detailed API view.
+            </summary>
+        </member>
+        <member name="T:WebApi.DocumentationController.ViewModels.ApiExplorerViewModel">
+            <summary>
+            Viewmodel for the general API view.
+            </summary>
+        </member>
+        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerViewModel.ApiDescriptions">
+            <summary>
+            Gets or sets the API descriptions.
+            </summary>
+            <value>
+            The API descriptions.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerViewModel.CurrentAssembly">
+            <summary>
+            Gets or sets the current assembly.
+            </summary>
+            <value>
+            The current assembly.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel.ControllerDescriptor">
+            <summary>
+            Gets or sets the controller descriptor.
+            </summary>
+            <value>
+            The controller descriptor.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel.ControllerApiDescriptions">
+            <summary>
+            Gets or sets the controller API descriptions.
+            </summary>
+            <value>
+            The controller API descriptions.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel.AttributeRoutes">
+            <summary>
+            Gets or sets the attribute routes.
+            </summary>
+            <value>
+            The attribute routes.
+            </value>
+        </member>
+    </members>
+</doc>

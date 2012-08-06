@@ -5,14 +5,11 @@ namespace WebApi.DocumentationController.Test.App_Start
 {
     using System;
     using System.Web;
-    using System.Web.Http.Description;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
-    using WebApi.DocumentationController.DocumentationProviders;
-
-    using global::Ninject;
-    using global::Ninject.Web.Common;
+    using Ninject;
+    using Ninject.Web.Common;
 
     public static class NinjectWebCommon 
     {
@@ -56,7 +53,6 @@ namespace WebApi.DocumentationController.Test.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IDocumentationProvider>().To<XmlCommentDocumentationProvider>();
         }        
     }
 }

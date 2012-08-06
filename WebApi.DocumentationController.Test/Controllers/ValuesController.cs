@@ -9,13 +9,22 @@ namespace WebApi.DocumentationController.Test.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
+        /// <summary>
+        /// Gets all stored strings.
+        /// </summary>
+        /// <example>api/values</example>
+        /// <returns>A list of strings.</returns>
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
+        /// <summary>
+        /// Gets the string with the specified id.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <example>api/values/5</example>
+        /// <returns>A single string.</returns>
         public string Get(int id)
         {
             return "value";

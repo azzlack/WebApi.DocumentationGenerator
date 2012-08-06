@@ -1,6 +1,7 @@
 ﻿namespace WebApi.DocumentationController.ViewModels
 {
     using System.Collections.ObjectModel;
+    using System.Reflection;
     using System.Web.Http.Description;
 
     /// <summary>
@@ -15,5 +16,13 @@
         /// The API descriptions.
         /// </value>
         public Collection<ApiDescription> ApiDescriptions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current assembly.
+        /// </summary>
+        /// <value>
+        /// The current assembly.
+        /// </value>
+        public Assembly CurrentAssembly { get; set; }
     }
 }

@@ -1,15 +1,13 @@
-﻿namespace WebApi.DocumentationController.Ninject
+﻿namespace Ninject.Web.WebApi.DocumentationController
 {
     using System.Web.Http.Description;
 
-    using WebApi.DocumentationController.DocumentationProviders;
-
-    using global::Ninject.Modules;
+    using global::WebApi.DocumentationController.DocumentationProviders;
 
     /// <summary>
     /// Module for wiring up documentation providers
     /// </summary>
-    public class XmlDocumentationModule : NinjectModule
+    public class XmlDocumentationModule : Ninject.Modules.NinjectModule
     {
         /// <summary>
         /// Loads the module into the kernel.

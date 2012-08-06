@@ -24,7 +24,8 @@
         {
             var viewmodel = new ApiExplorerViewModel()
                 {
-                    ApiDescriptions = GlobalConfiguration.Configuration.Services.GetApiExplorer().ApiDescriptions
+                    ApiDescriptions = GlobalConfiguration.Configuration.Services.GetApiExplorer().ApiDescriptions,
+                    CurrentAssembly = Assembly.GetAssembly(HttpContext.ApplicationInstance.GetType().BaseType)
                 };
 
             return this.View(viewmodel);
@@ -47,6 +48,7 @@
             var viewmodel = new ApiExplorerDetailsViewModel()
                            {
                                ApiDescriptions = GlobalConfiguration.Configuration.Services.GetApiExplorer().ApiDescriptions,
+                                CurrentAssembly = Assembly.GetAssembly(HttpContext.ApplicationInstance.GetType().BaseType),
                                ControllerDescriptor = controller,
                                ControllerApiDescriptions = descriptions,
                                AttributeRoutes = croutes
@@ -63,7 +65,8 @@
         {
             var viewmodel = new ApiExplorerViewModel()
             {
-                ApiDescriptions = GlobalConfiguration.Configuration.Services.GetApiExplorer().ApiDescriptions
+                ApiDescriptions = GlobalConfiguration.Configuration.Services.GetApiExplorer().ApiDescriptions,
+                CurrentAssembly = Assembly.GetAssembly(HttpContext.ApplicationInstance.GetType().BaseType)
             };
 
             return this.View(viewmodel);

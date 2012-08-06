@@ -133,7 +133,7 @@
     <Compile Include="ViewModels\ApiExplorerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\documentation.css" />
+    <Content Include="Content\documentation\documentation.css" />
     <Content Include="Scripts\documentation.js" />
     <Content Include="Views\Help\Index.cshtml" />
     <Content Include="Views\Help\Details.cshtml" />
@@ -173,10 +173,10 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(TargetPath)" "$(SolutionDir)WebApi.DocumentationController.NugetPackager\lib\net45\" /s /y
+    <PostBuildEvent>XCOPY "$(TargetDir)$(TargetName).*" "$(SolutionDir)WebApi.DocumentationController.NugetPackager\lib\net45\" /s /y
 XCOPY "$(ProjectDir)Views" "$(SolutionDir)WebApi.DocumentationController.NugetPackager\content\Views\" /s /y
 XCOPY "$(ProjectDir)Scripts\documentation.js" "$(SolutionDir)WebApi.DocumentationController.NugetPackager\content\Scripts\" /s /y
-XCOPY "$(ProjectDir)Content\documentation.css" "$(SolutionDir)WebApi.DocumentationController.NugetPackager\content\Content\" /s /y</PostBuildEvent>
+XCOPY "$(ProjectDir)Content\documentation" "$(SolutionDir)WebApi.DocumentationController.NugetPackager\content\Content\documentation\" /s /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
