@@ -35,7 +35,7 @@
         /// </summary> 
         public XmlCommentDocumentationProvider()
         {
-            var assemblyname = Assembly.GetCallingAssembly().FullName;
+            var assemblyname = Assembly.GetAssembly(HttpContext.Current.ApplicationInstance.GetType().BaseType).GetName().Name;
 
             var path = HttpContext.Current.Server.MapPath("~/bin/" + assemblyname + ".xml");
 
