@@ -2,10 +2,11 @@
 <package >
   <metadata>
     <id>WebApi.DocumentationController</id>
+	<title>WebApi Documentation Site Generator</title>
     <version>1.0.1</version>
     <authors>Ove Andersen</authors>
     <owners>EyeCatch</owners>
-    <projectUrl>http://www.eyecatch.no/projects/webapi-documentationcontroller/</projectUrl>
+    <projectUrl>http://www.eyecatch.no/projects/aspnet-webapi-documentation-pages-generator/</projectUrl>
     <iconUrl>http://www.eyecatch.no/favicon.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>

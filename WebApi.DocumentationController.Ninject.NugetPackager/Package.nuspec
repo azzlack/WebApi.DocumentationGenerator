@@ -5,11 +5,11 @@
     <version>1.0.0</version>
     <authors>Ove Andersen</authors>
     <owners>EyeCatch</owners>
-    <projectUrl>http://www.eyecatch.no/projects/webapi-documentationcontroller/</projectUrl>
+    <projectUrl>http://www.eyecatch.no/projects/aspnet-webapi-documentation-pages-generator/</projectUrl>
     <iconUrl>http://www.eyecatch.no/favicon.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-      Ninject module for automatically wiring up the documentation provider for WebApi.DocumentationController.
+      Ninject module for automatically wiring up the documentation provider for the WebApi Documentation Site Generator (WebApi.DocumentationController) package.
     </description>
     <releaseNotes>
     </releaseNotes>
@@ -18,7 +18,7 @@
     <dependencies>
       <group targetFramework="net45">
         <dependency id="WebApi.DocumentationController" version="1.0.0.0"/>
-        <dependency id="Ninject.Web.WebApi.RC" version="3.0.0.3"/>
+        <dependency id="Ninject.Web.WebApi-RC" version="3.0.0.3"/>
         <dependency id="Microsoft.AspNet.WebApi" version="4.0.20505.0"/>
         <dependency id="WebActivator" version="1.5.1"/>
       </group>
