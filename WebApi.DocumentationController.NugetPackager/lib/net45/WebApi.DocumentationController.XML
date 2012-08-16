@@ -14,9 +14,111 @@
             Executes after the application starts.
             </summary>
         </member>
+        <member name="T:WebApi.DocumentationController.Models.ApiActionDescription">
+            <summary>
+            Documentation for an <see cref="T:System.Web.Http.ApiController"/> action
+            </summary>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.Routes">
+            <summary>
+            Gets or sets the paths.
+            </summary>
+            <value>
+            The paths.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.Summary">
+            <summary>
+            Gets or sets the summary.
+            </summary>
+            <value>
+            The summary.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.Example">
+            <summary>
+            Gets or sets the example.
+            </summary>
+            <value>
+            The example.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.Remarks">
+            <summary>
+            Gets or sets the remarks.
+            </summary>
+            <value>
+            The remarks.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.Returns">
+            <summary>
+            Gets or sets the returns.
+            </summary>
+            <value>
+            The returns.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.ParameterDescriptions">
+            <summary>
+            Gets or sets the parameter descriptions.
+            </summary>
+            <value>
+            The parameter descriptions.
+            </value>
+        </member>
+        <member name="T:WebApi.DocumentationController.Models.ApiControllerDescription">
+            <summary>
+            Documentation for an <see cref="T:System.Web.Http.ApiController"/>
+            </summary>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiControllerDescription.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiControllerDescription.Actions">
+            <summary>
+            Gets or sets the actions.
+            </summary>
+            <value>
+            The actions.
+            </value>
+        </member>
         <member name="T:WebApi.DocumentationController.Controllers.HelpController">
             <summary>
             Controller for viewing automatically generated documentation.
+            </summary>
+        </member>
+        <member name="F:WebApi.DocumentationController.Controllers.HelpController.controllers">
+            <summary>
+            The controllers.
+            </summary>
+        </member>
+        <member name="F:WebApi.DocumentationController.Controllers.HelpController.routes">
+            <summary>
+            The routes.
+            </summary>
+        </member>
+        <member name="F:WebApi.DocumentationController.Controllers.HelpController.currentAssembly">
+            <summary>
+            The current assembly.
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Controllers.HelpController.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.Controllers.HelpController"/> class.
             </summary>
         </member>
         <member name="M:WebApi.DocumentationController.Controllers.HelpController.Index">
@@ -104,17 +206,33 @@
             <param name="actionDescriptor">The action descriptor.</param>
             <returns>The xpath navigator for the member node.</returns>
         </member>
-        <member name="T:WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel">
+        <member name="T:WebApi.DocumentationController.Models.ApiRouteDescription">
             <summary>
-            Viewmodel for the detailed API view.
+            Documentation for an API route
             </summary>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiRouteDescription.Method">
+            <summary>
+            Gets or sets the method.
+            </summary>
+            <value>
+            The method.
+            </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiRouteDescription.Path">
+            <summary>
+            Gets or sets the path.
+            </summary>
+            <value>
+            The path.
+            </value>
         </member>
         <member name="T:WebApi.DocumentationController.ViewModels.ApiExplorerViewModel">
             <summary>
             Viewmodel for the general API view.
             </summary>
         </member>
-        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerViewModel.ApiDescriptions">
+        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerViewModel.ApiControllerDescriptions">
             <summary>
             Gets or sets the API descriptions.
             </summary>
@@ -130,28 +248,17 @@
             The current assembly.
             </value>
         </member>
-        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel.ControllerDescriptor">
+        <member name="T:WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel">
             <summary>
-            Gets or sets the controller descriptor.
+            Viewmodel for the detailed API view.
             </summary>
-            <value>
-            The controller descriptor.
-            </value>
         </member>
-        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel.ControllerApiDescriptions">
+        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel.ApiControllerDescription">
             <summary>
-            Gets or sets the controller API descriptions.
+            Gets or sets the API controller description.
             </summary>
             <value>
-            The controller API descriptions.
-            </value>
-        </member>
-        <member name="P:WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel.AttributeRoutes">
-            <summary>
-            Gets or sets the attribute routes.
-            </summary>
-            <value>
-            The attribute routes.
+            The API controller description.
             </value>
         </member>
     </members>

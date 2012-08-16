@@ -1,8 +1,11 @@
 ﻿namespace WebApi.DocumentationController.ViewModels
 {
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Reflection;
     using System.Web.Http.Description;
+
+    using WebApi.DocumentationController.Models;
 
     /// <summary>
     /// Viewmodel for the general API view.
@@ -15,7 +18,7 @@
         /// <value>
         /// The API descriptions.
         /// </value>
-        public Collection<ApiDescription> ApiDescriptions { get; set; }
+        public IEnumerable<ApiControllerDescription> ApiControllerDescriptions { get; set; }
 
         /// <summary>
         /// Gets or sets the current assembly.

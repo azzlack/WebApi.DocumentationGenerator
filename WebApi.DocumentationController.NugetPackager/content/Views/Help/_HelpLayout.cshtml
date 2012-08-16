@@ -24,7 +24,7 @@
         <nav>
             <ul id="menu" class="clear-fix">
                 <li>@Html.ActionLink("Start", "Index")</li>
-                @foreach (var controller in Model.ApiDescriptions.GroupBy(x => x.ActionDescriptor.ControllerDescriptor.ControllerName).OrderBy(x => x.Key))
+                @foreach (var controller in Model.ApiControllerDescriptions.GroupBy(x => x.Name).OrderBy(x => x.Key))
                 {
                     <li>@Html.ActionLink(controller.Key, "Details", new { id = controller.Key })</li>
                 }

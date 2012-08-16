@@ -7,6 +7,8 @@ using System.Web.Http;
 
 namespace WebApi.DocumentationController.Test.Controllers
 {
+    using AttributeRouting.Web.Http;
+
     public class ValuesController : ApiController
     {
         /// <summary>
@@ -14,6 +16,7 @@ namespace WebApi.DocumentationController.Test.Controllers
         /// </summary>
         /// <example>api/values</example>
         /// <returns>A list of strings.</returns>
+        [GET("api/building")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -25,24 +28,31 @@ namespace WebApi.DocumentationController.Test.Controllers
         /// <param name="id">The id.</param>
         /// <example>api/values/5</example>
         /// <returns>A single string.</returns>
+        [GET("api/building/{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
         // POST api/values
-        public void Post(string value)
+        public void Post([FromBody] string value)
         {
         }
 
         // PUT api/values/5
-        public void Put(int id, string value)
+        public void Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE api/values/5
         public void Delete(int id)
         {
+        }
+
+        [GET("api/values/search/{searchString}")]
+        public string Search(string searchString)
+        {
+            return searchString;
         }
     }
 }
