@@ -76,44 +76,23 @@
             // Get actions
             var actions =
                 GlobalConfiguration.Configuration.Services.GetApiExplorer().ApiDescriptions
-                    .GroupBy(c => c.ActionDescriptor.ControllerDescriptor.ControllerName)
+                    .GroupBy(x => x.ActionDescriptor.ControllerDescriptor.ControllerName)
                     .First(x => x.Key.Equals(id, StringComparison.InvariantCultureIgnoreCase));
 
             var controller = new ApiControllerDescription()
                 {
                     Name = actions.First().ActionDescriptor.ControllerDescriptor.ControllerName,
-                    Actions = actions.Select(x => new ApiActionDescription()
+                    Actions = actions.GroupBy(x => x.Documentation).Select(x => new ApiActionDescription()
                         {
-                            Name = x.ActionDescriptor.ActionName,
-                            Routes = new List<ApiRouteDescription>() { new ApiRouteDescription() { Method = x.HttpMethod.Method, Path = x.RelativePath.ToLower() }},
-                            Summary = JsonConvert.DeserializeObject<JObject>(x.Documentation).Value<string>("summary"),
-                            Example = JsonConvert.DeserializeObject<JObject>(x.Documentation).Value<string>("example"),
-                            Remarks = JsonConvert.DeserializeObject<JObject>(x.Documentation).Value<string>("remarks"),
-                            Returns = JsonConvert.DeserializeObject<JObject>(x.Documentation).Value<string>("returns"),
-                            ParameterDescriptions = x.ParameterDescriptions
-                        }).ToList()
+                            Name = x.First().ActionDescriptor.ActionName,
+                            Routes = this.GetActionRoutes(x.Select(a => a)),
+                            Summary = JsonConvert.DeserializeObject<JObject>(x.Key).Value<string>("summary"),
+                            Example = JsonConvert.DeserializeObject<JObject>(x.Key).Value<string>("example"),
+                            Remarks = JsonConvert.DeserializeObject<JObject>(x.Key).Value<string>("remarks"),
+                            Returns = JsonConvert.DeserializeObject<JObject>(x.Key).Value<string>("returns"),
+                            ParameterDescriptions = x.Select(a => a.ParameterDescriptions).First()
+                        }).OrderBy(a => a.Name).ToList()
                 };
-
-            this.routes = RouteTable.Routes.OfType<IAttributeRoute>()
-                                .Where(x => x.Defaults != null && x.Defaults.Any(c => c.Key.Equals("controller") && c.Value != null && c.Value.ToString().Equals(controller.Name)))
-                                .ToList();
-
-            // Add attribute routes
-            for (var i = 0; i < controller.Actions.Count(); i++)
-            {
-                var actionRoutes = this.routes.Where(x => x.Defaults.Any(c => c.Key.Equals("action") && c.Value.ToString() == controller.Actions[i].Name)).ToList();
-
-                if (actionRoutes.Any())
-                {
-                    var r = actionRoutes.Select(x => new ApiRouteDescription()
-                        {
-                            Method = x.Constraints.Values.OfType<RestfulHttpMethodConstraint>().First().AllowedMethods.FirstOrDefault(),
-                            Path = x.Url
-                        });
-
-                    controller.Actions[i].Routes = r.ToList();
-                }
-            }
 
             var viewmodel = new ApiExplorerDetailsViewModel()
                            {
@@ -123,7 +102,7 @@
                            };
 
             return View(viewmodel);
-        }
+        }        
 
         /// <summary>
         /// Models diagram view.
@@ -138,6 +117,29 @@
             };
 
             return this.View(viewmodel);
+        }
+
+        /// <summary>
+        /// Gets the action routes.
+        /// </summary>
+        /// <param name="apiDescriptions">The API descriptions.</param>
+        /// <returns>A list of action routes</returns>
+        private IList<ApiRouteDescription> GetActionRoutes(IEnumerable<ApiDescription> apiDescriptions)
+        {
+            var actionRoutes = new List<ApiRouteDescription>();
+
+            foreach (var apiDescription in apiDescriptions)
+            {
+                var route = new ApiRouteDescription()
+                {
+                    Method = apiDescription.HttpMethod.Method,
+                    Path = apiDescription.RelativePath
+                };
+
+                actionRoutes.Add(route);
+            }
+
+            return actionRoutes;
         }
     }
 }

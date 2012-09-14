@@ -140,6 +140,13 @@
             </summary>
             <returns>The model diagram view.</returns>
         </member>
+        <member name="M:WebApi.DocumentationController.Controllers.HelpController.GetActionRoutes(System.Collections.Generic.IEnumerable{System.Web.Http.Description.ApiDescription})">
+            <summary>
+            Gets the action routes.
+            </summary>
+            <param name="apiDescriptions">The API descriptions.</param>
+            <returns>A list of action routes</returns>
+        </member>
         <member name="T:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider">
             <summary>
             Documentation provider for XML comments.

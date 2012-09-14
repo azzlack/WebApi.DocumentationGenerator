@@ -16,7 +16,6 @@ namespace WebApi.DocumentationController.Test.Controllers
         /// </summary>
         /// <example>api/values</example>
         /// <returns>A list of strings.</returns>
-        [GET("api/building")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -28,7 +27,6 @@ namespace WebApi.DocumentationController.Test.Controllers
         /// <param name="id">The id.</param>
         /// <example>api/values/5</example>
         /// <returns>A single string.</returns>
-        [GET("api/building/{id}")]
         public string Get(int id)
         {
             return "value";
@@ -47,6 +45,18 @@ namespace WebApi.DocumentationController.Test.Controllers
         // DELETE api/values/5
         public void Delete(int id)
         {
+        }
+
+        [POST("api/values/{id}/value")]
+        public string AddValue([FromBody] string value)
+        {
+            return value;
+        }
+
+        [POST("api/values/{id}/{value}")]
+        public string PostAddValue(string value)
+        {
+            return value;
         }
 
         [GET("api/values/search/{searchString}")]

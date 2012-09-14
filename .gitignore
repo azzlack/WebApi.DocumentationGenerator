@@ -106,3 +106,4 @@ UpgradeLog*.XML
 BuildPublishPackage.cmd
 *.nupkg
 *.bak
+_TeamCity*/
