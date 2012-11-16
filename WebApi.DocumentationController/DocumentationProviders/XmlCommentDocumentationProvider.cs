@@ -1,11 +1,15 @@
 ﻿namespace WebApi.DocumentationController.DocumentationProviders
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Text.RegularExpressions;
     using System.Web;
     using System.Web.Http.Controllers;
     using System.Web.Http.Description;
+    using System.Xml;
     using System.Xml.XPath;
 
     using Newtonsoft.Json.Linq;
@@ -28,33 +32,46 @@
         /// <summary>
         /// The xml document navigator.
         /// </summary>
-        private readonly XPathNavigator documentNavigator;
+        private readonly IList<XPathNavigator> documentNavigators;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XmlCommentDocumentationProvider" /> class.
         /// </summary> 
         public XmlCommentDocumentationProvider()
         {
-            var assemblyname = Assembly.GetAssembly(HttpContext.Current.ApplicationInstance.GetType().BaseType).GetName().Name;
+            this.documentNavigators = new List<XPathNavigator>();
 
-            var path = HttpContext.Current.Server.MapPath("~/bin/" + assemblyname + ".xml");
+            // Load all assemblies that have xml documentation
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies().Where(x => !x.IsDynamic && !string.IsNullOrEmpty(x.Location)))
+            {
+                var path = HttpContext.Current.Server.MapPath("~/bin/" + assembly.GetName().Name + ".xml");
 
-            var xpath = new XPathDocument(path);
+                if (File.Exists(path))
+                {
+                    var xpath = new XPathDocument(path);
 
-            this.documentNavigator = xpath.CreateNavigator();
+                    this.documentNavigators.Add(xpath.CreateNavigator());
+                }
+            }
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XmlCommentDocumentationProvider" /> class.
         /// </summary>
-        /// <param name="documentPath">The document path.</param>
-        public XmlCommentDocumentationProvider(string documentPath)
+        /// <param name="documentPaths">The document paths.</param>
+        public XmlCommentDocumentationProvider(IEnumerable<string> documentPaths)
         {
-            var path = HttpContext.Current.Server.MapPath(documentPath);
+            this.documentNavigators = new List<XPathNavigator>();
 
-            var xpath = new XPathDocument(path);
+            foreach (var documentPath in documentPaths)
+            {
+                var path = HttpContext.Current.Server.MapPath(documentPath);
 
-            this.documentNavigator = xpath.CreateNavigator();
+                // Load documentation xml
+                var xpath = new XPathDocument(path);
+
+                this.documentNavigators.Add(xpath.CreateNavigator()); 
+            }  
         }
 
         /// <summary>
@@ -186,11 +203,15 @@
             if (reflectedActionDescriptor != null)
             {
                 var selectExpression = string.Format(MethodExpression, GetMemberName(reflectedActionDescriptor.MethodInfo));
-                var node = this.documentNavigator.SelectSingleNode(selectExpression);
-                
-                if (node != null)
+
+                foreach (var documentNavigator in documentNavigators)
                 {
-                    return node;
+                    var node = documentNavigator.SelectSingleNode(selectExpression);
+
+                    if (node != null)
+                    {
+                        return node;
+                    }
                 }
             }
 

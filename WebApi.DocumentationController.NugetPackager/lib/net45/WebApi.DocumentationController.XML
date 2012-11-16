@@ -162,7 +162,7 @@
             Regular expression for determining nullable types.
             </summary>
         </member>
-        <member name="F:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.documentNavigator">
+        <member name="F:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.documentNavigators">
             <summary>
             The xml document navigator.
             </summary>
@@ -172,11 +172,11 @@
             Initializes a new instance of the <see cref="T:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider"/> class.
             </summary> 
         </member>
-        <member name="M:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.#ctor(System.String)">
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.#ctor(System.Collections.Generic.IEnumerable{System.String})">
             <summary>
             Initializes a new instance of the <see cref="T:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider"/> class.
             </summary>
-            <param name="documentPath">The document path.</param>
+            <param name="documentPaths">The document paths.</param>
         </member>
         <member name="M:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
             <summary>
