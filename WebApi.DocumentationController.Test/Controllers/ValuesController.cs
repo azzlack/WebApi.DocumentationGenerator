@@ -9,6 +9,9 @@ namespace WebApi.DocumentationController.Test.Controllers
 {
     using AttributeRouting.Web.Http;
 
+    using WebApi.DocumentationController.Models;
+    using WebApi.DocumentationController.Test.Models;
+
     public class ValuesController : ApiController
     {
         /// <summary>
@@ -18,7 +21,7 @@ namespace WebApi.DocumentationController.Test.Controllers
         /// <returns>A list of strings.</returns>
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new[] { "value1", "value2" };
         }
 
         /// <summary>
@@ -27,14 +30,16 @@ namespace WebApi.DocumentationController.Test.Controllers
         /// <param name="id">The id.</param>
         /// <example>api/values/5</example>
         /// <returns>A single string.</returns>
+        [ApiReturnType(typeof(SampleReturnType))]
         public string Get(int id)
         {
             return "value";
         }
 
         // POST api/values
-        public void Post([FromBody] string value)
+        public HttpResponseMessage Post([FromBody] SampleRequestType value)
         {
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         // PUT api/values/5
@@ -48,19 +53,13 @@ namespace WebApi.DocumentationController.Test.Controllers
         }
 
         [POST("api/values/{id}/value")]
-        public string AddValue([FromBody] string value)
-        {
-            return value;
-        }
-
-        [POST("api/values/{id}/{value}")]
-        public string PostAddValue(string value)
+        public string PostAddValue(string id, [FromBody] string value)
         {
             return value;
         }
 
         [GET("api/values/search/{searchString}")]
-        public string Search(string searchString)
+        public string GetSearch(string searchString)
         {
             return searchString;
         }

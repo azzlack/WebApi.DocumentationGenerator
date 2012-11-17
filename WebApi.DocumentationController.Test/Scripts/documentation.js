@@ -4,4 +4,6 @@
             $(value).addClass("selected");
         }
     });
+
+    $(".sampleRequests, .sampleResponses").tabs();
 });

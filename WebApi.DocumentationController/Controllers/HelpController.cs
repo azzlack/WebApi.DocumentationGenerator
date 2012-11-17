@@ -3,18 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net.Http;
     using System.Reflection;
     using System.Web.Http;
-    using System.Web.Http.Description;
     using System.Web.Mvc;
     using System.Web.Routing;
 
     using AttributeRouting.Framework;
-    using AttributeRouting.Web.Constraints;
-
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
 
     using WebApi.DocumentationController.Models;
     using WebApi.DocumentationController.ViewModels;
@@ -79,19 +73,12 @@
                     .GroupBy(x => x.ActionDescriptor.ControllerDescriptor.ControllerName)
                     .First(x => x.Key.Equals(id, StringComparison.InvariantCultureIgnoreCase));
 
+            var concatParams = actions.GroupBy(x => new { x.ActionDescriptor.ActionName, ConcatParameterNames = string.Join(",", x.ParameterDescriptions.Select(p => p.Name)) });
+
             var controller = new ApiControllerDescription()
                 {
                     Name = actions.First().ActionDescriptor.ControllerDescriptor.ControllerName,
-                    Actions = actions.GroupBy(x => x.Documentation).Select(x => new ApiActionDescription()
-                        {
-                            Name = x.First().ActionDescriptor.ActionName,
-                            Routes = this.GetActionRoutes(x.Select(a => a)),
-                            Summary = JsonConvert.DeserializeObject<JObject>(x.Key).Value<string>("summary"),
-                            Example = JsonConvert.DeserializeObject<JObject>(x.Key).Value<string>("example"),
-                            Remarks = JsonConvert.DeserializeObject<JObject>(x.Key).Value<string>("remarks"),
-                            Returns = JsonConvert.DeserializeObject<JObject>(x.Key).Value<string>("returns"),
-                            ParameterDescriptions = x.Select(a => a.ParameterDescriptions).First()
-                        }).OrderBy(a => a.Name).ToList()
+                    Actions = actions.GroupBy(x => new { x.ActionDescriptor.ActionName, ConcatParameterNames = string.Join(",", x.ParameterDescriptions.Select(p => p.Name)) }).Select(x => new ApiActionDescription(x)).OrderBy(a => a.Name).ToList()
                 };
 
             var viewmodel = new ApiExplorerDetailsViewModel()
@@ -117,29 +104,6 @@
             };
 
             return this.View(viewmodel);
-        }
-
-        /// <summary>
-        /// Gets the action routes.
-        /// </summary>
-        /// <param name="apiDescriptions">The API descriptions.</param>
-        /// <returns>A list of action routes</returns>
-        private IList<ApiRouteDescription> GetActionRoutes(IEnumerable<ApiDescription> apiDescriptions)
-        {
-            var actionRoutes = new List<ApiRouteDescription>();
-
-            foreach (var apiDescription in apiDescriptions)
-            {
-                var route = new ApiRouteDescription()
-                {
-                    Method = apiDescription.HttpMethod.Method,
-                    Path = apiDescription.RelativePath
-                };
-
-                actionRoutes.Add(route);
-            }
-
-            return actionRoutes;
         }
     }
 }

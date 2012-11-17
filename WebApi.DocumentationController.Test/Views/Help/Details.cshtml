@@ -1,6 +1,7 @@
 ﻿@using System.Net.Http
 @using System.Web.Http.Description
 @using System.Web.Mvc
+@using System.Web.Mvc.Html
 @model WebApi.DocumentationController.ViewModels.ApiExplorerDetailsViewModel
 
 @{
@@ -67,6 +68,48 @@
                         }
                     </table>
                 }
+                
+                <h5>Sample request:</h5>
+                <div class="sampleRequests">
+                    @if (action.SampleRequests.Any())
+                    {
+                        <ul>
+                            @foreach (var sample in action.SampleRequests)
+                            {
+                                <li><a href="#@string.Format("{0}_{1}", action.Name, sample.MediaType.Replace("/", "_"))">@sample.MediaType</a></li>
+                            }
+                        </ul>
+                        foreach (var sample in action.SampleRequests)
+                        {
+                            <div id="@string.Format("{0}_{1}", action.Name, sample.MediaType.Replace("/", "_"))" class="ui-tabs-panel"><pre>@Html.DisplayFor(s => sample.Sample)</pre></div>
+                        }
+                    }
+                    else
+                    {
+                        <pre>No sample request defined.</pre>
+                    }
+                </div>
+                
+                <h5>Sample response:</h5>
+                <div class="sampleResponses">
+                    @if (action.SampleResponses.Any())
+                    {
+                        <ul>
+                            @foreach (var sample in action.SampleResponses)
+                            {
+                                <li><a href="#@string.Format("{0}_{1}", action.Name, sample.MediaType.Replace("/", "_"))">@sample.MediaType</a></li>
+                            }
+                        </ul>
+                        foreach (var sample in action.SampleResponses)
+                        {
+                            <div id="@string.Format("{0}_{1}", action.Name, sample.MediaType.Replace("/", "_"))" class="ui-tabs-panel"><pre>@Html.DisplayFor(s => sample.Sample)</pre></div>
+                        }
+                    }
+                    else
+                    {
+                        <pre>No sample response defined.</pre>
+                    }
+                </div>
             </li>
         }
     </ul>

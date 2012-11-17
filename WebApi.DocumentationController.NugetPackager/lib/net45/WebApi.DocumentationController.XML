@@ -14,10 +14,98 @@
             Executes after the application starts.
             </summary>
         </member>
+        <member name="T:WebApi.DocumentationController.Functions.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            NOTE: Copied from the ASP.NET Web Stack 17. November 2012
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Functions.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:WebApi.DocumentationController.Functions.SampleGeneratorService">
+            <summary>
+            Ther sample generator service
+            </summary>
+        </member>
+        <member name="F:WebApi.DocumentationController.Functions.SampleGeneratorService.Singleton">
+            <summary>
+            The singleton
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Functions.SampleGeneratorService.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:WebApi.DocumentationController.Functions.SampleGeneratorService"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Functions.SampleGeneratorService.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:WebApi.DocumentationController.Functions.SampleGeneratorService.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:WebApi.DocumentationController.Functions.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:WebApi.DocumentationController.Functions.SampleGeneratorService.TryFormatJson(System.String)">
+            <summary>
+            Tries to format the string as indented json.
+            </summary>
+            <param name="str">The string.</param>
+            <returns>Indented json.</returns>
+        </member>
+        <member name="M:WebApi.DocumentationController.Functions.SampleGeneratorService.TryFormatXml(System.String)">
+            <summary>
+            Tries to format the string as indented XML.
+            </summary>
+            <param name="str">The string.</param>
+            <returns>Indented XML.</returns>
+        </member>
+        <member name="P:WebApi.DocumentationController.Functions.SampleGeneratorService.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:WebApi.DocumentationController.Functions.SampleGeneratorService.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>The instance.</value>
+        </member>
         <member name="T:WebApi.DocumentationController.Models.ApiActionDescription">
             <summary>
             Documentation for an <see cref="T:System.Web.Http.ApiController"/> action
             </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Models.ApiActionDescription.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.Models.ApiActionDescription"/> class.
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Models.ApiActionDescription.#ctor(System.Collections.Generic.IEnumerable{System.Web.Http.Description.ApiDescription})">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.Models.ApiActionDescription"/> class.
+            </summary>
+            <param name="descriptions">The description.</param>
+            <param name="documentation">The documentation.</param>
+        </member>
+        <member name="M:WebApi.DocumentationController.Models.ApiActionDescription.#ctor(System.Linq.IGrouping{System.String,System.Web.Http.Description.ApiDescription})">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.Models.ApiActionDescription"/> class.
+            </summary>
+            <param name="group">The group.</param>
         </member>
         <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.Name">
             <summary>
@@ -66,6 +154,18 @@
             <value>
             The returns.
             </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.SampleRequests">
+            <summary>
+            Gets or sets the sample requests.
+            </summary>
+            <value>The sample requests.</value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.SampleResponses">
+            <summary>
+            Gets or sets the sample responses.
+            </summary>
+            <value>The sample responses.</value>
         </member>
         <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.ParameterDescriptions">
             <summary>
@@ -140,13 +240,6 @@
             </summary>
             <returns>The model diagram view.</returns>
         </member>
-        <member name="M:WebApi.DocumentationController.Controllers.HelpController.GetActionRoutes(System.Collections.Generic.IEnumerable{System.Web.Http.Description.ApiDescription})">
-            <summary>
-            Gets the action routes.
-            </summary>
-            <param name="apiDescriptions">The API descriptions.</param>
-            <returns>A list of action routes</returns>
-        </member>
         <member name="T:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider">
             <summary>
             Documentation provider for XML comments.
@@ -213,10 +306,38 @@
             <param name="actionDescriptor">The action descriptor.</param>
             <returns>The xpath navigator for the member node.</returns>
         </member>
+        <member name="T:WebApi.DocumentationController.Models.ApiReturnTypeAttribute">
+            <summary>
+            Attribute for setting the action return type for the documentation provider
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Models.ApiReturnTypeAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.Models.ApiReturnTypeAttribute"/> class.
+            </summary>
+            <param name="returnType">Type of the return.</param>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiReturnTypeAttribute.ReturnType">
+            <summary>
+            Gets or sets the type of the return.
+            </summary>
+            <value>The type of the return.</value>
+        </member>
         <member name="T:WebApi.DocumentationController.Models.ApiRouteDescription">
             <summary>
             Documentation for an API route
             </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Models.ApiRouteDescription.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.Models.ApiRouteDescription"/> class.
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Models.ApiRouteDescription.#ctor(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.Models.ApiRouteDescription"/> class.
+            </summary>
+            <param name="apiDescription">The API description.</param>
         </member>
         <member name="P:WebApi.DocumentationController.Models.ApiRouteDescription.Method">
             <summary>
@@ -233,6 +354,51 @@
             <value>
             The path.
             </value>
+        </member>
+        <member name="T:WebApi.DocumentationController.Models.ApiActionSample">
+            <summary>
+            Sample request/response for api actions
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Models.ApiActionSample.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.Models.ApiActionSample"/> class.
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.Models.ApiActionSample.#ctor(System.Net.Http.Formatting.MediaTypeFormatter,System.Web.Http.Description.ApiDescription,WebApi.DocumentationController.Models.ApiActionSampleDirection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.Models.ApiActionSample"/> class.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="apiDescription">The API description.</param>
+            <param name="sampleDirection">The sample direction.</param>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionSample.MediaType">
+            <summary>
+            Gets or sets the type of the media.
+            </summary>
+            <value>The type of the media.</value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionSample.Sample">
+            <summary>
+            Gets or sets the sample.
+            </summary>
+            <value>The sample.</value>
+        </member>
+        <member name="T:WebApi.DocumentationController.Models.ApiActionSampleDirection">
+            <summary>
+            The api action direction
+            </summary>
+        </member>
+        <member name="F:WebApi.DocumentationController.Models.ApiActionSampleDirection.Request">
+            <summary>
+            An HTTP request
+            </summary>
+        </member>
+        <member name="F:WebApi.DocumentationController.Models.ApiActionSampleDirection.Response">
+            <summary>
+            An HTTP response
+            </summary>
         </member>
         <member name="T:WebApi.DocumentationController.ViewModels.ApiExplorerViewModel">
             <summary>
