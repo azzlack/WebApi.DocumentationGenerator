@@ -100,22 +100,22 @@
                 
                 if (summaryNode != null)
                 {
-                    documentation["summary"] = summaryNode.Value.Trim();
+                    documentation["summary"] = summaryNode.InnerXml.Trim();
                 }
 
                 if (exampleNode != null)
                 {
-                    documentation["example"] = exampleNode.Value.Trim();
+                    documentation["example"] = exampleNode.InnerXml.Trim();
                 }
 
                 if (remarksNode != null)
                 {
-                    documentation["remarks"] = remarksNode.Value.Trim();
+                    documentation["remarks"] = remarksNode.InnerXml.Trim();
                 }
 
                 if (returnsNode != null)
                 {
-                    documentation["returns"] = returnsNode.Value.Trim();
+                    documentation["returns"] = returnsNode.InnerXml.Trim();
                 }
 
                 return documentation.ToString();

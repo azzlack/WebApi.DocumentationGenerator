@@ -5,11 +5,13 @@
     using System.Linq;
     using System.Reflection;
     using System.Web.Http;
+    using System.Web.Http.Description;
     using System.Web.Mvc;
-    using System.Web.Routing;
 
     using AttributeRouting.Framework;
 
+    using WebApi.DocumentationController.DocumentationProviders;
+    using WebApi.DocumentationController.Interfaces;
     using WebApi.DocumentationController.Models;
     using WebApi.DocumentationController.ViewModels;
 
@@ -73,8 +75,6 @@
                     .GroupBy(x => x.ActionDescriptor.ControllerDescriptor.ControllerName)
                     .First(x => x.Key.Equals(id, StringComparison.InvariantCultureIgnoreCase));
 
-            var concatParams = actions.GroupBy(x => new { x.ActionDescriptor.ActionName, ConcatParameterNames = string.Join(",", x.ParameterDescriptions.Select(p => p.Name)) });
-
             var controller = new ApiControllerDescription()
                 {
                     Name = actions.First().ActionDescriptor.ControllerDescriptor.ControllerName,
@@ -97,13 +97,27 @@
         /// <returns>The model diagram view.</returns>
         public ActionResult ModelDiagram()
         {
-            var viewmodel = new ApiExplorerViewModel()
+            var modelDiagramProvider = this.GetModelDiagramProvider();
+
+            var viewmodel = new ModelDiagramViewModel()
             {
                 ApiControllerDescriptions = this.controllers,
-                CurrentAssembly = this.currentAssembly ?? (this.currentAssembly = Assembly.GetAssembly(HttpContext.ApplicationInstance.GetType().BaseType))
+                CurrentAssembly = this.currentAssembly ?? (this.currentAssembly = Assembly.GetAssembly(HttpContext.ApplicationInstance.GetType().BaseType)),
+                ModelDiagramPath = modelDiagramProvider.Image
             };
 
             return this.View(viewmodel);
+        }
+
+        /// <summary>
+        /// Gets the model diagram provider.
+        /// </summary>
+        /// <returns>The current model diagram provider. Returns the default implementation if none is registered.</returns>
+        private IModelDiagramProvider GetModelDiagramProvider()
+        {
+            var service = GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IModelDiagramProvider)) as IModelDiagramProvider;
+
+            return service ?? new YumlModelDiagramProvider();
         }
     }
 }

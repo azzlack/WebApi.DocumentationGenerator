@@ -152,6 +152,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
     </Reference>
+    <Reference Include="Yuml.Net">
+      <HintPath>..\packages\Yuml.Net.1.0.0.0\lib\net45\Yuml.Net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AttributeRoutingHttp.cs" />
@@ -164,8 +167,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\SampleAssociationType.cs" />
     <Compile Include="Models\SampleRequestType.cs" />
-    <Compile Include="Models\SampleReturnType.cs" />
+    <Compile Include="Models\SampleResponseType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

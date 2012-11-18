@@ -25,12 +25,12 @@ namespace WebApi.DocumentationController.Test.Controllers
         }
 
         /// <summary>
-        /// Gets the string with the specified id.
+        /// Gets the <see cref="SampleResponseType"/> with the specified id.
         /// </summary>
         /// <param name="id">The id.</param>
         /// <example>api/values/5</example>
         /// <returns>A single string.</returns>
-        [ApiReturnType(typeof(SampleReturnType))]
+        [ApiReturnType(typeof(SampleResponseType))]
         public string Get(int id)
         {
             return "value";

@@ -107,3 +107,5 @@ BuildPublishPackage.cmd
 *.nupkg
 *.bak
 _TeamCity*/
+NuGetPackager/lib
+NuGetPackager/content

@@ -14,6 +14,63 @@
             Executes after the application starts.
             </summary>
         </member>
+        <member name="T:WebApi.DocumentationController.DocumentationProviders.YumlModelDiagramProvider">
+            <summary>
+            A Yuml-based model diagram provider
+            </summary>
+        </member>
+        <member name="T:WebApi.DocumentationController.Interfaces.IModelDiagramProvider">
+            <summary>
+            The model diagram provider interface
+            </summary>
+        </member>
+        <member name="P:WebApi.DocumentationController.Interfaces.IModelDiagramProvider.Models">
+            <summary>
+            Gets the models.
+            </summary>
+            <value>The models.</value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Interfaces.IModelDiagramProvider.Image">
+            <summary>
+            Gets the path to the model diagram image
+            </summary>
+            <value>The model diagram image.</value>
+        </member>
+        <member name="F:WebApi.DocumentationController.DocumentationProviders.YumlModelDiagramProvider.yumlFactory">
+            <summary>
+            The yuml generator
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.YumlModelDiagramProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.DocumentationProviders.YumlModelDiagramProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.YumlModelDiagramProvider.#ctor(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Initializes a new instance of the <see cref="T:WebApi.DocumentationController.DocumentationProviders.YumlModelDiagramProvider"/> class.
+            </summary>
+            <param name="models">The models.</param>
+        </member>
+        <member name="M:WebApi.DocumentationController.DocumentationProviders.YumlModelDiagramProvider.GetYumlFactory(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Gets the yUML factory.
+            </summary>
+            <param name="models">The models.</param>
+            <returns>The registered type for IYumlFactory, otherwise returns the default implementation.</returns>
+        </member>
+        <member name="P:WebApi.DocumentationController.DocumentationProviders.YumlModelDiagramProvider.Models">
+            <summary>
+            Gets the models.
+            </summary>
+            <value>The models.</value>
+        </member>
+        <member name="P:WebApi.DocumentationController.DocumentationProviders.YumlModelDiagramProvider.Image">
+            <summary>
+            Gets the path to the model diagram image
+            </summary>
+            <value>The model diagram image.</value>
+        </member>
         <member name="T:WebApi.DocumentationController.Functions.ObjectGenerator">
             <summary>
             This class will create an object of a given type and populate it with sample data.
@@ -99,7 +156,6 @@
             Initializes a new instance of the <see cref="T:WebApi.DocumentationController.Models.ApiActionDescription"/> class.
             </summary>
             <param name="descriptions">The description.</param>
-            <param name="documentation">The documentation.</param>
         </member>
         <member name="M:WebApi.DocumentationController.Models.ApiActionDescription.#ctor(System.Linq.IGrouping{System.String,System.Web.Http.Description.ApiDescription})">
             <summary>
@@ -122,6 +178,12 @@
             <value>
             The paths.
             </value>
+        </member>
+        <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.MainRoute">
+            <summary>
+            Gets or sets the main route.
+            </summary>
+            <value>The main route.</value>
         </member>
         <member name="P:WebApi.DocumentationController.Models.ApiActionDescription.Summary">
             <summary>
@@ -239,6 +301,12 @@
             Models diagram view.
             </summary>
             <returns>The model diagram view.</returns>
+        </member>
+        <member name="M:WebApi.DocumentationController.Controllers.HelpController.GetModelDiagramProvider">
+            <summary>
+            Gets the model diagram provider.
+            </summary>
+            <returns>The current model diagram provider. Returns the default implementation if none is registered.</returns>
         </member>
         <member name="T:WebApi.DocumentationController.DocumentationProviders.XmlCommentDocumentationProvider">
             <summary>
@@ -433,6 +501,17 @@
             <value>
             The API controller description.
             </value>
+        </member>
+        <member name="T:WebApi.DocumentationController.ViewModels.ModelDiagramViewModel">
+            <summary>
+            Viewmodel for the general API view.
+            </summary>
+        </member>
+        <member name="P:WebApi.DocumentationController.ViewModels.ModelDiagramViewModel.ModelDiagramPath">
+            <summary>
+            Gets or sets the model diagram path.
+            </summary>
+            <value>The model diagram path.</value>
         </member>
     </members>
 </doc>

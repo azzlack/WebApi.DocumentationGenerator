@@ -1,6 +1,6 @@
 ﻿namespace WebApi.DocumentationController.Test.Models
 {
-    public class SampleReturnType
+    public class SampleResponseType
     {
         public string Id { get; set; }
 

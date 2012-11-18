@@ -25,7 +25,6 @@
         /// Initializes a new instance of the <see cref="ApiActionDescription" /> class.
         /// </summary>
         /// <param name="descriptions">The description.</param>
-        /// <param name="documentation">The documentation.</param>
         public ApiActionDescription(IEnumerable<ApiDescription> descriptions)
         {
             var description = descriptions.First();
@@ -33,6 +32,7 @@
             this.Name = description.ActionDescriptor.ActionName;
             this.ParameterDescriptions = description.ParameterDescriptions;
             this.Routes = descriptions.Select(x => new ApiRouteDescription(x));
+            this.MainRoute = string.Format("{0} {1}", this.Routes.First().Method, this.Routes.First().Path);
 
             try
             {
@@ -151,6 +151,12 @@
         /// The paths.
         /// </value>
         public IEnumerable<ApiRouteDescription> Routes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the main route.
+        /// </summary>
+        /// <value>The main route.</value>
+        public string MainRoute { get; set; }
 
         /// <summary>
         /// Gets or sets the summary.
