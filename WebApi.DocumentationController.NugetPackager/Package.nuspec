@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>WebApi.DocumentationController</id>
-	  <title>WebApi Documentation Page Generator</title>
+		<title>WebApi Documentation Page Generator</title>
 		<version>1.0.1</version>
 		<authors>Ove Andersen</authors>
 		<owners>EyeCatch</owners>
@@ -11,18 +11,21 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>
 			Controller for automatically generating documentation / help pages for your ASP.NET Web API.
-			
+		</description>
+		<summary>
+			Controller for automatically generating documentation / help pages for your ASP.NET Web API.
+
 			Features:
 			* Full support for the AttributeRouting library
 			* Automatic (but configurable) generation of model diagrams
 			* Support for most documentation elements
-					- Summary
-					- Example
-					- Remarks
-					- Returns
-		</description>
+			- Summary
+			- Example
+			- Remarks
+			- Returns
+		</summary>
 		<releaseNotes>
-			Now supports generating model diagrams.
+			Improved documentation styling.
 		</releaseNotes>
 		<copyright>Copyright EyeCatch 2012</copyright>
 		<tags>webapi documentation help route attributerouting</tags>

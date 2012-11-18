@@ -107,5 +107,5 @@ BuildPublishPackage.cmd
 *.nupkg
 *.bak
 _TeamCity*/
-NuGetPackager/lib
-NuGetPackager/content
+WebApi.DocumentationController.NugetPackager/lib
+WebApi.DocumentationController.NugetPackager/content
