@@ -6,4 +6,12 @@
     });
 
     $(".sampleRequests, .sampleResponses").tabs();
+    
+    $(".actions").accordion({
+        header: "header",
+        collapsible: true,
+        heightStyle: "content",
+        icons: null,
+        active: false
+    });
 });
