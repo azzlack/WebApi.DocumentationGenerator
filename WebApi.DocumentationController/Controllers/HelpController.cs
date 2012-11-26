@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
     using System.Reflection;
     using System.Web.Http;
     using System.Web.Http.Description;
@@ -24,11 +25,6 @@
         /// The controllers.
         /// </summary>
         private readonly IList<ApiControllerDescription> controllers;
-
-        /// <summary>
-        /// The routes.
-        /// </summary>
-        private IList<IAttributeRoute> routes; 
 
         /// <summary>
         /// The current assembly.
