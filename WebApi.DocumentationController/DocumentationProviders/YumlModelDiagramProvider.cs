@@ -52,6 +52,22 @@
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="YumlModelDiagramProvider" /> class.
+        /// </summary>
+        /// <param name="models">The models.</param>
+        /// <param name="detailLevels">The detail levels.</param>
+        public YumlModelDiagramProvider(IEnumerable<Type> models, DetailLevel[] detailLevels)
+        {
+            this.Models = models;
+
+            // Configure generator
+            this.yumlFactory = this.GetYumlFactory(this.Models);
+
+            // Get image path
+            this.Image = this.yumlFactory.GenerateClassDiagramUri(detailLevels);
+        }
+
+        /// <summary>
         /// Gets the models.
         /// </summary>
         /// <value>The models.</value>
