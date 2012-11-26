@@ -201,13 +201,6 @@ ul#menu {
 			text-decoration: none;
 		}
 
-/* jquery ui
-----------------------------------------------------------*/
-.ui-widget-header {
-	border: 1px solid #AAA/*{borderColorHeader}*/;
-	background: #CCC/*{bgColorHeader}*/ url(images/ui-bg_highlight-soft_75_cccccc_1x100.png)/*{bgImgUrlHeader}*/ 50%/*{bgHeaderXPos}*/ 50%/*{bgHeaderYPos}*/ repeat-x/*{bgHeaderRepeat}*/;
-}
-
 /* page elements
 ----------------------------------------------------------*/
 /* featured */
@@ -256,7 +249,28 @@ section.feature {
 }
 
 /* action list */
+.actions table {
+	margin: 0;
+}
+
 .actions header {
+	border: 1px solid #C5DBEC;
+	color: #2E6E9E;
+	background: #DFEFFC none;
+	border-radius: 0;
+}
+
+.actions header.ui-accordion-header-active {
+	border: 1px solid #79B7E7;
+	color: #E17009;
+	background: #F5F8F9 none;
+	border-radius: 0;
+}
+
+.actions header.ui-state-hover {
+	border: 1px solid #79B7E7;
+	color: #1D5987;
+	background: #D0E5F5 none;
 }
 	
 	.actions header table {
@@ -277,28 +291,85 @@ section.feature {
 		font-size: 0.8em;
 	}
 
-.actions table {
-	margin: 0;
+.actions .action {
+	border-radius: 0;
 }
 
-.actions h5 {
-	font-weight: bold;
-}
-
-	.actions h5:first-child {
-		font-weight: bold;
-		padding-top: 0;
-		margin-top: 0;
+	.actions .action.ui-accordion-content-active {
+		border-left: 1px solid #A6C9E2;
+		border-right: 1px solid #A6C9E2;
+		border-bottom: 1px solid #A6C9E2;
 	}
 
-.actions p {
-	font-style: italic;
-}
+	.actions h5 {
+		font-weight: bold;
+	}
 
-.actions .sampleRequests > pre,
-.actions .sampleResponses > pre {
-	padding: 0 1.4em;
-}
+		.actions h5:first-child {
+			font-weight: bold;
+			padding-top: 0;
+			margin-top: 0;
+		}
+
+	.actions p {
+		font-style: italic;
+	}
+
+	.actions .sampleRequests,
+	.actions .sampleResponses {
+		border-radius: 0;
+		padding: 0;
+	}
+
+		.actions .sampleRequests .ui-tabs-nav,
+		.actions .sampleResponses .ui-tabs-nav {
+			background: #79B7E7 none;
+			border-radius: 0;
+		}
+
+			.actions .sampleRequests .ui-tabs-nav li,
+			.actions .sampleResponses .ui-tabs-nav li {
+				border-radius: 0;
+				background: #DFEFFC none;
+			}
+
+			.actions .sampleRequests .ui-tabs-nav li.ui-state-hover,
+			.actions .sampleResponses .ui-tabs-nav li.ui-state-hover {
+				border-top: 1px solid #79B7E7;
+				border-right: 1px solid #79B7E7;
+				border-left: 1px solid #79B7E7;
+				color: #1D5987;
+				background: #D0E5F5 none;
+			}
+
+				.actions .sampleRequests .ui-tabs-nav li.ui-state-hover a,
+				.actions .sampleResponses .ui-tabs-nav li.ui-state-hover a {
+					color: #1D5987;
+					background: #D0E5F5 none;
+				}
+
+			.actions .sampleRequests .ui-tabs-nav li.ui-state-active.ui-state-hover,
+			.actions .sampleResponses .ui-tabs-nav li.ui-state-active.ui-state-hover {
+				border: none;
+				background: white none;
+			}
+
+				.actions .sampleRequests .ui-tabs-nav li.ui-state-active.ui-state-hover a,
+				.actions .sampleResponses .ui-tabs-nav li.ui-state-active.ui-state-hover a {
+					color: #212121;
+					background: white none;
+				}
+
+			.actions .sampleRequests .ui-tabs-nav li.ui-tabs-active,
+			.actions .sampleResponses .ui-tabs-nav li.ui-tabs-active {
+				border: none;
+				background: white none;
+			}
+
+		.actions .sampleRequests > pre,
+		.actions .sampleResponses > pre {
+			padding: 0 1.4em;
+		}
 
 /* model diagram */
 .modeldiagram {

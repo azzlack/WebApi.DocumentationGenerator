@@ -113,12 +113,13 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="WebActivator, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WebActivator, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
+      <HintPath>..\packages\WebActivator.1.5.2\lib\net40\WebActivator.dll</HintPath>
     </Reference>
-    <Reference Include="Yuml.Net">
-      <HintPath>..\packages\Yuml.Net.1.0.0.0\lib\net45\Yuml.Net.dll</HintPath>
+    <Reference Include="Yuml.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Yuml.Net.1.2.0.0\lib\net45\Yuml.Net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

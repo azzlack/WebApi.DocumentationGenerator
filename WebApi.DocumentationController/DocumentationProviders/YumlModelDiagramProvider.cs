@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net.Http;
     using System.Reflection;
     using System.Web.Http;
 
@@ -34,7 +33,7 @@
             this.yumlFactory = this.GetYumlFactory(this.Models);
 
             // Get image path
-            this.Image = this.yumlFactory.GenerateClassDiagram();
+            this.Image = this.yumlFactory.GenerateClassDiagramUri();
         }
 
         /// <summary>
@@ -49,7 +48,7 @@
             this.yumlFactory = this.GetYumlFactory(this.Models);
 
             // Get image path
-            this.Image = this.yumlFactory.GenerateClassDiagram();
+            this.Image = this.yumlFactory.GenerateClassDiagramUri();
         }
 
         /// <summary>
