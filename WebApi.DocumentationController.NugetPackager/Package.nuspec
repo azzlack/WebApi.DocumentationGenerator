@@ -32,13 +32,13 @@
 		<dependencies>
 			<group targetFramework="net45">
 				<dependency id="jQuery" version="1.8.3"/>
-				<dependency id="jQuery.UI.Combined" version="1.9.0"/>
+				<dependency id="jQuery.UI.Combined" version="1.9.1"/>
 				<dependency id="Microsoft.AspNet.Mvc" version="4.0.20710.0"/>
 				<dependency id="Microsoft.AspNet.WebApi" version="4.0.20710.0"/>
 				<dependency id="AttributeRouting.Core.Web" version="3.2" />
 				<dependency id="Newtonsoft.Json" version="4.5.11" />
 				<dependency id="WebActivator" version="1.5.2"/>
-				<dependency id="Yuml.Net" version="1.2.0.0"/>
+				<dependency id="Yuml.Net" version="1.2.0.1"/>
 			</group>
 		</dependencies>
 	</metadata>
